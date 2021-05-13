@@ -7,13 +7,13 @@ import 'dart:async';
 
 class HorizontalSwipeDetector extends StatelessWidget {
   final Widget child;
-  final Function? onBack;
-  final Function? onForward;
+  final Function onBack;
+  final Function onForward;
   final double leftRightZone;
 
   const HorizontalSwipeDetector(
-      {Key? key,
-        required this.child,
+      {Key key,
+        @required this.child,
         this.onBack,
         this.onForward,
         this.leftRightZone = 1})
@@ -41,16 +41,16 @@ class HorizontalSwipeDetector extends StatelessWidget {
 }
 
 class _BackForwardRecognizer extends PrimaryPointerGestureRecognizer {
-  final Function? onBack;
-  final Function? onForward;
+  final Function onBack;
+  final Function onForward;
   final BuildContext context;
   final double leftRightZone;
 
   _BackForwardRecognizer(
       {this.onBack,
         this.onForward,
-        required this.context,
-        required this.leftRightZone});
+        @required this.context,
+        @required this.leftRightZone});
 
   var _debouncer = _Debouncer(delay: Duration(milliseconds: 100));
   List<PointerEvent> events = [];
@@ -94,7 +94,7 @@ class _BackForwardRecognizer extends PrimaryPointerGestureRecognizer {
 
 class _Debouncer {
   final Duration delay;
-  Timer? _timer;
+  Timer _timer;
 
   _Debouncer({this.delay = const Duration(milliseconds: 300)});
 
